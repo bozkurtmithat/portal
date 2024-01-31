@@ -3,13 +3,12 @@ package my.portal.bean;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 import javax.swing.Timer;
 
 import my.portal.controllers.SliderController;
 
-public class SliderModel extends Observable implements SliderController {
+public class SliderModel extends ModelBase implements SliderController {
 
 	private int currentIndex=0;
 	private List<ImageLink> imageLinks = new ArrayList<>();
@@ -29,7 +28,7 @@ public class SliderModel extends Observable implements SliderController {
 	@Override
 	public List<ImageLink> getImageLinks() {
 		if(imageLinks.isEmpty()) {
-			getHttpClient().sendAsynRequest(null);
+			sendAsynRequest(null);
 		}
 		return imageLinks;
 	}

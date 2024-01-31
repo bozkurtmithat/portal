@@ -1,55 +1,8 @@
 package my.portal.component.miglayout;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Toolkit;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeEvent;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLayer;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
-import javax.swing.SwingWorker;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
-
 import my.portal.component.JPanelBase;
-import net.miginfocom.swing.MigLayout;
-import tr.gov.uyap.system.login.esign.LoginTask;
-import tr.gov.uyap.system.login.esign.SignActionListener;
-import tr.gov.uyap.system.login.esign.SignTask;
-import tr.gov.uyap.system.login.esign.bean.ApplicationBean;
-import tr.gov.uyap.system.login.esign.bean.CertificateWrapper;
-import tr.gov.uyap.system.login.esign.bean.SmartCardManager;
-import tr.gov.uyap.system.login.esign.exception.ExceptionHandler;
-import tr.gov.uyap.system.login.esign.misc.BrowserUtil;
-import tr.gov.uyap.system.login.esign.misc.Config;
-import tr.gov.uyap.system.login.esign.misc.ImageUtil;
-import tr.gov.uyap.system.login.esign.misc.TextResources;
-import tr.gov.uyap.system.login.esign.swing.LockingLayerUI;
-import tr.gov.uyap.system.login.esign.swing.OptionPane;
-import tr.gov.uyap.system.login.esign.swing.Status;
-import tr.gov.uyap.system.login.esign.swing.StatusBar;
-import tr.gov.uyap.system.login.esign.swing.StatusIndicator;
-import tr.gov.uyap.system.login.esign.swing.TextPane;
-import tr.gov.uyap.system.login.esign.ui.ApplicationChoosePanel;
-import tr.gov.uyap.system.login.esign.ui.CertDetailsPanel;
-import tr.gov.uyap.system.login.esign.ui.IconButton;
-import tr.gov.uyap.system.login.esign.ui.NumPad;
-import tr.gov.uyap.system.login.esign.ui.SettingsPanel;
 
-public class ESignPanel extends JPanelBase implements SignActionListener {
+public class ESignPanel extends JPanelBase{ /*implements SignActionListener
 	
 	private static final long serialVersionUID = 1L;
 	private final LockingLayerUI<JPanel> lockingLayer = new LockingLayerUI<>();
@@ -255,6 +208,6 @@ public class ESignPanel extends JPanelBase implements SignActionListener {
 
 		task.execute();
 	}
-
+*/
 }
 

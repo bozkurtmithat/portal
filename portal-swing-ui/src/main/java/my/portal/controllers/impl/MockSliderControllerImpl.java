@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import my.portal.bean.ImageLink;
-import my.portal.controllers.Impl;
+import my.portal.common.Impl;
 import my.portal.controllers.SliderController;
 
 @Impl(SliderController.class)

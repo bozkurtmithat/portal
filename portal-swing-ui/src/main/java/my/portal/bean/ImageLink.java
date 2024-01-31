@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ImageLink implements Serializable, Cloneable{
 
+	private static final long serialVersionUID = 1L;
 	public static final String STYLED_ANCHOR_LINK = "<html><a href=''>%s</a></html>";
 	public static final String STYLED_PLAIN_TEXT = "<html>%s</html>"; // this is for autowrap of text
 	

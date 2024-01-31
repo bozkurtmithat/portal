@@ -5,7 +5,7 @@ import my.portal.common.ResponseDto;
 
 public interface HttpClient {
 
-	public void sendAsynRequest(RequestDto requestDto);
+	public void sendAsynRequest(RequestDto requestDto, ResponseListener responseListener);
 	
 	public ResponseDto sendSyncRequest(RequestDto requestDto);
 }

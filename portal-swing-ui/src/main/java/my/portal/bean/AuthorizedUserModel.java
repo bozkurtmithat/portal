@@ -1,6 +1,6 @@
 package my.portal.bean;
 
-public class AuthorizedUserModel {
+public class AuthorizedUserModel extends ModelBase {
 
 	
 }

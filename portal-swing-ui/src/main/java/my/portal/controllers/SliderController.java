@@ -4,7 +4,7 @@ import java.util.List;
 
 import my.portal.bean.ImageLink;
 
-public interface SliderController extends Controller{
+public interface SliderController{
 
 	public List<ImageLink> getImageLinks();
 	

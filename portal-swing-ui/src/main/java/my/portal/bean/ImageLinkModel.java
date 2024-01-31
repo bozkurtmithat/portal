@@ -3,9 +3,8 @@ package my.portal.bean;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Observable;
 
-public class ImageLinkModel extends Observable{
+public class ImageLinkModel extends ModelBase{
 
 	List<ImageLink> links = new ArrayList<>();
 	

@@ -107,7 +107,7 @@ public class SafeIcon implements Icon {
 			standInComponent = (JComponent) clazz.newInstance();
 		} catch (InstantiationException e) {
 			standInComponent = new AbstractButton() {
-
+				private static final long serialVersionUID = 1L;
 			};
 			((AbstractButton) standInComponent).setModel(new DefaultButtonModel());
 		}
