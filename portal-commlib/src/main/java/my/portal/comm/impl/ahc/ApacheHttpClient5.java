@@ -26,12 +26,12 @@ import org.slf4j.LoggerFactory;
 
 import my.portal.comm.Request;
 import my.portal.comm.RequestMethods;
-import my.portal.comm.SwingHttpClient;
+import my.portal.comm.HttpClient;
 import my.portal.common.Impl;
 import my.portal.common.ResponseDto;
 
-@Impl(SwingHttpClient.class)
-public class ApacheHttpClient5 implements SwingHttpClient {
+@Impl(HttpClient.class)
+public class ApacheHttpClient5 implements HttpClient {
 
 	private static Logger log = LoggerFactory.getLogger(ApacheHttpClient5.class);
 	private static DefaultConfigurations defaults = new DefaultConfigurations();

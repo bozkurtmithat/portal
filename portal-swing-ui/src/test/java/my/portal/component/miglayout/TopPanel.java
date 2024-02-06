@@ -8,10 +8,11 @@ import javax.swing.JLabel;
 
 import lombok.Getter;
 import lombok.Setter;
-import my.portal.bean.ImageLink;
 import my.portal.component.JButtonHyperlink;
 import my.portal.component.JPanelBase;
 import my.portal.component.SafeIcon;
+import my.portal.model.ImageLink;
+import my.portal.model.ImageLinkBuilder;
 import my.portal.util.IOUtil;
 import net.miginfocom.swing.MigLayout;
 
@@ -44,7 +45,7 @@ public class TopPanel extends JPanelBase {
 	}
 
 	private JButtonHyperlink createLinkButtonWithPreferedSize(String text, String url, Icon icon, int width, int height) {
-		ImageLink imageLink = ImageLink.builder().text(text).targetUrl(url).image(new SafeIcon(icon).iconToImage()).build();
+		ImageLink imageLink = ImageLinkBuilder.builder().text(text).targetUrl(url).image(new SafeIcon(icon).iconToImage()).build();
 		JButtonHyperlink hlink = new JButtonHyperlink(imageLink);
 		hlink.setPreferredSize(new Dimension(width, height));
 		return hlink;

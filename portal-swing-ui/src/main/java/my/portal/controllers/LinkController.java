@@ -2,11 +2,12 @@ package my.portal.controllers;
 
 import java.util.List;
 
-import my.portal.bean.ImageLink;
+import my.portal.model.ImageLink;
 
 public interface LinkController{
 
-	public List<ImageLink> getLinks();
+	public List<ImageLink> getImageLinks();
 	
-	public List<ImageLink> getTopLinks();
-}
+	public List<ImageLink> getTopImageLinks();
+
+} 

@@ -6,8 +6,8 @@ import java.awt.Image;
 
 import javax.swing.JButton;
 
-import my.portal.bean.SliderModel;
 import my.portal.component.JPanelBase;
+import my.portal.model.SliderModel;
 import my.portal.util.IOUtil;
 
 public class AbsoluteCenterPanel extends JPanelBase {

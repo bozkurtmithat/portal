@@ -3,9 +3,10 @@ package my.portal.controllers.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import my.portal.bean.ImageLink;
 import my.portal.common.Impl;
 import my.portal.controllers.SliderController;
+import my.portal.model.ImageLink;
+import my.portal.model.ImageLinkBuilder;
 
 @Impl(SliderController.class)
 public class MockSliderControllerImpl implements SliderController {
@@ -19,12 +20,12 @@ public class MockSliderControllerImpl implements SliderController {
 		if (imageLinks.isEmpty()) {
 			List<ImageLink> links = new ArrayList<>();
 			String baseUrl = "https://google.com";
-			links.add(new ImageLink(baseUrl, "https://cdn.adalet.gov.tr/portal/duyuru/resim/27649.jpeg"));
-			links.add(new ImageLink(baseUrl, "https://cdn.adalet.gov.tr/portal/duyuru/resim/27648.jpeg"));
-			links.add(new ImageLink(baseUrl, "https://cdn.adalet.gov.tr/portal/duyuru/resim/8960.jpeg"));
-			links.add(new ImageLink(baseUrl, "https://cdn.adalet.gov.tr/portal/duyuru/resim/26881.jpeg"));
-			links.add(new ImageLink(baseUrl, "https://cdn.adalet.gov.tr/portal/duyuru/resim/26624.png"));
-			links.add(new ImageLink(baseUrl, "https://cdn.adalet.gov.tr/portal/duyuru/resim/15872.png"));
+			links.add(new ImageLinkBuilder().targetUrl(baseUrl).imageUrl("https://cdn.adalet.gov.tr/portal/duyuru/resim/27649.jpeg").build());
+			links.add(new ImageLinkBuilder().targetUrl(baseUrl).imageUrl("https://cdn.adalet.gov.tr/portal/duyuru/resim/27648.jpeg").build());
+			links.add(new ImageLinkBuilder().targetUrl(baseUrl).imageUrl("https://cdn.adalet.gov.tr/portal/duyuru/resim/8960.jpeg").build());
+			links.add(new ImageLinkBuilder().targetUrl(baseUrl).imageUrl("https://cdn.adalet.gov.tr/portal/duyuru/resim/26881.jpeg").build());
+			links.add(new ImageLinkBuilder().targetUrl(baseUrl).imageUrl("https://cdn.adalet.gov.tr/portal/duyuru/resim/26624.png").build());
+			links.add(new ImageLinkBuilder().targetUrl(baseUrl).imageUrl("https://cdn.adalet.gov.tr/portal/duyuru/resim/15872.png").build());
 			imageLinks = links;
 		}
 		return imageLinks;

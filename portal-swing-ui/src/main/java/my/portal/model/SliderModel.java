@@ -1,4 +1,4 @@
-package my.portal.bean;
+package my.portal.model;
 
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;

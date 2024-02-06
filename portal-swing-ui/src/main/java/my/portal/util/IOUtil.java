@@ -17,7 +17,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-import my.portal.bean.ImageLink;
+import my.portal.model.ImageLink;
 
 public class IOUtil {
 
@@ -47,7 +47,7 @@ public class IOUtil {
 		try {
 			URL url = getURL(resource);
 			BufferedImage bufferedImage = ImageIO.read(url);
-			System.out.println("width:" + bufferedImage.getWidth() + " height:" + bufferedImage.getHeight());
+//			System.out.println("width:" + bufferedImage.getWidth() + " height:" + bufferedImage.getHeight());
 			return new ImageIcon(
 					needResize(bufferedImage, width, height) ? resize(bufferedImage, width, height) : bufferedImage);
 		} catch (IOException e) {

@@ -1,8 +1,6 @@
 package my.portal.common;
 
-import java.io.Serializable;
-
-public class ResponseDto implements Serializable{
+public class ResponseDto extends DtoBase{
 	
 	private static final long serialVersionUID = 1L;
 	

@@ -2,7 +2,7 @@ package my.portal.controllers;
 
 import java.util.List;
 
-import my.portal.bean.ImageLink;
+import my.portal.model.ImageLink;
 
 public interface SliderController{
 

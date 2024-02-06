@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import my.portal.bean.ImageLink;
+import my.portal.model.ImageLink;
 import my.portal.util.IOUtil;
 
 public class JLabelHyperlink extends JLabel {
@@ -24,7 +24,7 @@ public class JLabelHyperlink extends JLabel {
     public void init() {
         if(link.getImage() != null)
         	setIcon(new ImageIcon(link.getImage()));
-        setText(link.getPlainText());
+        setText(link.getHtmlPlainText());
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         setHorizontalTextPosition(JLabel.TRAILING);
         setVerticalTextPosition(JLabel.CENTER);
@@ -32,12 +32,12 @@ public class JLabelHyperlink extends JLabel {
              
             @Override
             public void mouseEntered(MouseEvent e) {
-                setText(link.getHyperlinkText());
+                setText(link.getHtmlAnchorText());
             }
              
             @Override
             public void mouseExited(MouseEvent e) {
-                setText(link.getPlainText());
+                setText(link.getHtmlPlainText());
             }
              
             @Override

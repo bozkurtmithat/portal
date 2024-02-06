@@ -39,7 +39,7 @@ public class MainPanel extends JPanelBase {
 		topPanel.setPreferredSize(new Dimension(600, 50));
 		topPanel.setBounds(180, 10, (int) topPanel.getPreferredSize().getWidth(),
 				(int) topPanel.getPreferredSize().getHeight());
-		linker.getTopLinks().forEach(topPanel.getModel()::addImageLink);
+		linker.getTopImageLinks().forEach(topPanel.getModel()::addImageLink);
 		add(topPanel);
 
 		// add left
@@ -49,7 +49,7 @@ public class MainPanel extends JPanelBase {
 		leftPanel.setPreferredSize(new Dimension(400, 500));
 		leftPanel.setBounds(20, 80, (int) leftPanel.getPreferredSize().getWidth(),
 				(int) leftPanel.getPreferredSize().getHeight());
-		linker.getLinks().forEach(leftPanel.getModel()::addImageLink);
+		linker.getImageLinks().forEach(leftPanel.getModel()::addImageLink);
 		add(leftPanel);
 		
 		// add center

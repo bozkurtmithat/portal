@@ -4,7 +4,7 @@ import java.awt.Cursor;
 
 import javax.swing.JButton;
 
-import my.portal.bean.ImageLink;
+import my.portal.model.ImageLink;
 import my.portal.util.IOUtil;
 
 public class JButtonHyperlink extends JButton{

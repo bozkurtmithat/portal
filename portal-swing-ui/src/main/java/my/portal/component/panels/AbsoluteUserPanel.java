@@ -8,8 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 
-import my.portal.bean.AuthorizedUser;
 import my.portal.component.JPanelBase;
+import my.portal.model.AuthorizedUser;
 import my.portal.util.IOUtil;
 
 public class AbsoluteUserPanel extends JPanelBase {

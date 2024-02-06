@@ -21,11 +21,13 @@ import my.portal.common.Impl;
 @Slf4j
 public class CDI {
 
+	private static final boolean mockEnabled = Boolean.parseBoolean(System.getProperty("mock.enable"));
 	private static final String JAR_EXT = ".jar";
 	private static final String CLASS_EXT = ".class";
-	private static final Predicate<String> PACKAGE_IMP_PREDICATE = Pattern.compile("my/portal/[\\w/]*impl/")
+	private static final Predicate<String> PACKAGE_IMP_PREDICATE = Pattern.compile(".*my/portal/[\\w/]*impl/.*")
 			.asPredicate();
 
+	private static Map<Class<?>, Object> lookupTable = new HashMap<>();
 	private static Map<Class<?>, Class<?>> impls = new HashMap<>();
 
 	static {
@@ -36,11 +38,11 @@ public class CDI {
 				s = uri.getFile();
 				s = s.substring(s.indexOf('/'), s.lastIndexOf('/'));
 				s = s.substring(isWindoz() ? 1 : 0, s.lastIndexOf('/'));
-				if (s.contains(".jar")) {
+				if (s.contains(JAR_EXT)) {
 					s = s.replace("!", "");
 				}
 
-				log.debug("### Reading jar/bin {}", s);
+				log.error("### Reading jar/bin {}", s);
 				scanAnnotation(new File(s));
 			} catch (Exception e) {
 
@@ -84,6 +86,17 @@ public class CDI {
 
 	}
 
+	private static void scanAnnotation(JarFile jar) {
+		Enumeration<JarEntry> fileList = jar.entries();
+		while (fileList.hasMoreElements()) {
+			JarEntry file = fileList.nextElement();
+			if (PACKAGE_IMP_PREDICATE.test(file.getName()) && file.getName().endsWith(CLASS_EXT)) {
+				String className = file.getName().replaceAll("/", ".").substring(0, file.getName().length() - 6);
+				loadAnnotation(className);
+			}
+		}
+	}
+	
 	private static void loadAnnotation(File file) {
 
 		if (!PACKAGE_IMP_PREDICATE.test(file.getPath())) {
@@ -91,25 +104,10 @@ public class CDI {
 		}
 
 		String className = file.getPath().replace(File.separator, ".");
-		log.debug("classname:{}",className);
-//		className = className.substring(index);
+		int indexOf = className.indexOf("my.portal."); 
+		className = className.substring(indexOf);
+		log.error("classname:{}",className);
 		className = className.substring(0, className.length() - CLASS_EXT.length());
-		loadAnnotation(className);
-	}
-
-	private static void scanAnnotation(JarFile jar) {
-		Enumeration<JarEntry> fileList = jar.entries();
-		while (fileList.hasMoreElements()) {
-			JarEntry file = fileList.nextElement();
-			if (PACKAGE_IMP_PREDICATE.test(file.getName()) && file.getName().endsWith(CLASS_EXT)) {
-				loadAnnotation(file);
-			}
-		}
-	}
-
-	private static void loadAnnotation(JarEntry file) {
-		String className = file.getName().replaceAll("/", ".").substring(0, file.getName().length() - 6);
-
 		loadAnnotation(className);
 	}
 
@@ -121,10 +119,15 @@ public class CDI {
 				claz = CDI.class.getClassLoader().loadClass(className);
 				if (claz.isAnnotationPresent(Impl.class)) {
 					Impl op = (Impl) claz.getAnnotation(Impl.class);
-					impls.put(op.value(), claz);
+					if(claz.getSimpleName().startsWith("Mock")) {
+						if(mockEnabled)
+							impls.put(op.value(), claz);
+					}else{
+						impls.put(op.value(), claz);
+					}
 				}
 			} catch (Throwable e) {
-				e.printStackTrace();
+				log.error("load annotation for {} is failed! ", className, e);
 			}
 
 		} catch (Throwable e) {
@@ -137,6 +140,19 @@ public class CDI {
 		return ((OS_NAME != null) && (OS_NAME.indexOf("windows") >= 0));
 	}
 
+	public static void registerImpl(Class<?> interfaceClass, Class<?> implementationClass) {
+		impls.put(interfaceClass, implementationClass);
+	}
+	
+	public static <T> void registerLookup(Class<T> claz, T instance) {
+		lookupTable.put(claz, instance);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T> T lookup(Class<T> claz) {
+		return (T)lookupTable.get(claz);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public static <T> T getImpl(Class<T> c) {
 		try {

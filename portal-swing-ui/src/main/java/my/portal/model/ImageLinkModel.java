@@ -1,23 +1,27 @@
-package my.portal.bean;
+package my.portal.model;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
-public class ImageLinkModel extends ModelBase{
+import my.portal.common.RequestDto;
+import my.portal.controllers.LinkController;
 
-	List<ImageLink> links = new ArrayList<>();
+public class ImageLinkModel extends ModelBase implements LinkController{
+
+	private String command;
+	private List<ImageLink> links = new ArrayList<>();
+	
+	public void setCommand(String command) {
+		this.command = command;
+	}
 	
 	public void addImageLink(ImageLink link) {
 		links.add(link);
 		setChanged();
 		notifyObservers(link);
 	}
-	
-	public List<ImageLink> getImageLinks() {
-		return links;
-	}
-	
+		
 	public void removeImageLink(ImageLink link) {
 		boolean change = false;
 		ListIterator<ImageLink> listIterator = links.listIterator();
@@ -34,5 +38,16 @@ public class ImageLinkModel extends ModelBase{
 			setChanged();
 			notifyObservers(links);
 		}
+	}
+
+	@Override
+	public List<ImageLink> getImageLinks() {
+		sendAsynRequest(new RequestDto(), this);
+		return links;
+	}
+
+	@Override
+	public List<ImageLink> getTopImageLinks() {
+		return links;
 	}
 }

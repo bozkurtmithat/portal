@@ -1,11 +1,12 @@
 package my.portal.comm;
 
-import my.portal.common.RequestDto;
 import my.portal.common.ResponseDto;
 
-public interface HttpClient {
 
-	public void sendAsynRequest(RequestDto requestDto, ResponseListener responseListener);
+public interface HttpClient{
 	
-	public ResponseDto sendSyncRequest(RequestDto requestDto);
+	public void sendAsynRequest(Request request);
+	
+	public ResponseDto sendSyncRequest(Request request);
+	
 }

@@ -20,7 +20,8 @@ public class ObjectSerializerProtocol{
 	public ResponseDto receiveData(InputStream inputStream, ResponseListener callbackHandler) {
 		try(ObjectInputStream objectInputStream = getObjectInputStream(inputStream) ) {
 			ResponseDto responseDto = (ResponseDto)objectInputStream.readObject();
-			callbackHandler.responseCompleted(responseDto);
+			if(callbackHandler != null)
+				callbackHandler.responseCompleted(responseDto);
 			return responseDto;
 		} catch (IOException | ClassNotFoundException cnfe) {
 			throw new RuntimeException(cnfe.getMessage(), cnfe);

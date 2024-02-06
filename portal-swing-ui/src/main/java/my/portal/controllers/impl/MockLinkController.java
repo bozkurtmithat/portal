@@ -4,15 +4,16 @@ import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 
-import my.portal.bean.ImageLink;
 import my.portal.common.Impl;
 import my.portal.controllers.LinkController;
+import my.portal.model.ImageLink;
+import my.portal.model.ImageLinkBuilder;
 import my.portal.util.IOUtil;
 
 @Impl(value = LinkController.class)
 public class MockLinkController implements LinkController{
 	
-	public List<ImageLink> getLinks() {
+	public List<ImageLink> getImageLinks() {
 
 		List<ImageLink> links = new ArrayList<>();
 		Image linkImage = IOUtil.getImage("link.png");
@@ -28,7 +29,7 @@ public class MockLinkController implements LinkController{
 	}
 
 	@Override
-	public List<ImageLink> getTopLinks() {
+	public List<ImageLink> getTopImageLinks() {
 		List<ImageLink> links = new ArrayList<>();
 		Image linkImage = null;//IOUtil.loadIcon("link.png");
 		links.add(createLink("Makanlık", "https://google.com", linkImage ));
@@ -39,7 +40,7 @@ public class MockLinkController implements LinkController{
 	}
 	
 	private ImageLink createLink(String text, String url, Image image) {
-		return ImageLink.builder().text(text).targetUrl(url).image(image).build();
+		return ImageLinkBuilder.builder().text(text).targetUrl(url).image(image).build();
 	}
 	
 

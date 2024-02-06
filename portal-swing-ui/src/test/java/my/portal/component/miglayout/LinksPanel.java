@@ -3,9 +3,9 @@ package my.portal.component.miglayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import my.portal.bean.ImageLink;
 import my.portal.component.JLabelHyperlink;
 import my.portal.component.JPanelBase;
+import my.portal.model.ImageLink;
 import net.miginfocom.swing.MigLayout;
 
 public class LinksPanel extends JPanelBase{
